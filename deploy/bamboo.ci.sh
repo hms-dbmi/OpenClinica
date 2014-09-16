@@ -14,5 +14,5 @@ install() {
 
 install >/tmp/startup.log 2>&1
 
-AWS_ACCESS_KEY_ID=$ACCESS_KEY AWS_SECRET_ACCESS_KEY=$SECRET_KEY aws s3 cp ${bamboo.build.working.directory}/$ORIGARTIFACT s3://cbmi_artifacts/$KEYNAME/$DEVENV/${bamboo.buildNumber}/$ARTIFACT
-AWS_ACCESS_KEY_ID=$ACCESS_KEY AWS_SECRET_ACCESS_KEY=$SECRET_KEY aws s3 cp ${bamboo.build.working.directory}/$ORIGARTIFACT s3://cbmi_artifacts/$KEYNAME/$DEVENV/latest/$ARTIFACT
+AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 cp ${bamboo.build.working.directory}/${ORIGARTIFACT} s3://cbmi_artifacts/${KEYNAME}/${DEVENV}/${bamboo.buildNumber}/$ARTIFACT
+AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 cp ${bamboo.build.working.directory}/${ORIGARTIFACT} s3://cbmi_artifacts/${KEYNAME}/${DEVENV}/latest/$ARTIFACT

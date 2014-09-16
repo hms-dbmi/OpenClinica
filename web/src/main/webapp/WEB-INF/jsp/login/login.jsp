@@ -87,6 +87,14 @@
        </tr>
        <tr>
             <td class="loginBox">
+            <div ID="samlBox">
+                <!-- News box contents -->
+                <h1><a href="${pageContext.request.contextPath}/saml/login/">Universal Login</A></h1>
+                <!-- End News box contents -->
+            </div>
+            </td>
+       
+            <td class="loginBox">
             <div ID="loginBox">
             <!-- Login box contents -->
                 <div ID="login">

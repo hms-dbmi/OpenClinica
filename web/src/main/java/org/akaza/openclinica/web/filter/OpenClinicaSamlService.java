@@ -12,6 +12,8 @@ import org.springframework.security.saml.SAMLCredential;
 import org.springframework.security.saml.userdetails.SAMLUserDetailsService;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
+
 
 @Component
 public class OpenClinicaSamlService implements SAMLUserDetailsService

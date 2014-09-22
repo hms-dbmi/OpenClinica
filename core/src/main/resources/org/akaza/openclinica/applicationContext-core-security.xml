@@ -32,7 +32,7 @@
         <!-- <security:user-service properties="/WEB-INF/users.properties" /> -->
     </security:authentication-provider>
     <security:authentication-provider ref="ldapAuthenticationProvider"/>
-    <security:authentication-provider ref="samlAuthenticationProvider"/>
+    <security:authentication-provider ref="samlAuthenticationProvider" user-service-ref="SAMLUserDetailsService"/>
   </security:authentication-manager>       
 
     <bean id="shaPasswordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" />
@@ -84,10 +84,7 @@
     </security:global-method-security>
     -->
 
-     <bean id="SAMLUserDetailsService" class="org.akaza.openclinica.web.filter.OpenClinicaSamlService"
-        p:dataSource-ref="dataSource"
-        p:usersByUsernameQuery="SELECT user_name,passwd,enabled,account_non_locked FROM user_account WHERE user_name = ?" />
-
+     <bean id="SAMLUserDetailsService" class="org.akaza.openclinica.web.filter.OpenClinicaSamlService" />
    
     <!-- ActiveDirectory -->
     <bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">

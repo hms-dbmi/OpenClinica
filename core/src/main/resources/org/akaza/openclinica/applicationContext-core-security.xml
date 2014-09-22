@@ -83,7 +83,12 @@
             access="ROLE_USER" />
     </security:global-method-security>
     -->
-    
+
+     <bean id="SAMLUserDetailsService" class="org.akaza.openclinica.web.filter.OpenClinicaSamlService"
+        p:dataSource-ref="dataSource"
+        p:usersByUsernameQuery="SELECT user_name,passwd,enabled,account_non_locked FROM user_account WHERE user_name = ?" />
+
+   
     <!-- ActiveDirectory -->
     <bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
         <constructor-arg><value>s[ldap.host]</value></constructor-arg>
@@ -109,6 +114,7 @@
         <!--
         <property name="userDetails" ref="bean" />
         -->
+	<property name="userDetailsService" ref="SAMLUserDetailsService"/>
     </bean>
 
     <!-- Provider of default SAML Context -->
@@ -208,6 +214,8 @@
         <property name="defaultProfileOptions">
             <bean class="org.springframework.security.saml.websso.WebSSOProfileOptions">
                 <property name="includeScoping" value="false"/>
+		<property name="binding" value="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+		<property name="relayState" value="https://openclinicadev-cbmi.hms.harvard.edu/OpenClinica/MainMenu"/>
             </bean>
         </property>
     </bean>

@@ -137,14 +137,19 @@
     <bean id="metadataGeneratorFilter" class="org.springframework.security.saml.metadata.MetadataGeneratorFilter">
         <constructor-arg>
             <bean class="org.springframework.security.saml.metadata.MetadataGenerator">
+                <property name="entityBaseURL" value="https://openclinicadev-cbmi.hms.harvard.edu/OpenClinica"/>    
+                <property name="requestSigned" value="false"/>                                                  
+                <property name="wantAssertionsSigned" value="false"/>
                 <property name="extendedMetadata">
                     <bean class="org.springframework.security.saml.metadata.ExtendedMetadata">
-                        <property name="idpDiscoveryEnabled" value="true"/>
+                        <property name="idpDiscoveryEnabled" value="false"/>
+                        <property name="signMetadata" value="false"/>
                     </bean>
                 </property>
             </bean>
         </constructor-arg>
     </bean>
+
  
  <bean id="metadata" class="org.springframework.security.saml.metadata.CachingMetadataManager">
 	<constructor-arg>
